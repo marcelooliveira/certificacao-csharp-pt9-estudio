@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Cinema.Dados
@@ -54,22 +57,36 @@ namespace Cinema.Dados
 
         private async Task InserirRegistrosAsync()
         {
-            string sql = @"
-                    INSERT Diretores (Nome) VALUES ('Quentin Tarantino');
-                    INSERT Diretores (Nome) VALUES ('James Cameron');
-                    INSERT Diretores (Nome) VALUES ('Tim Burton');
+            var assembly = Assembly.GetExecutingAssembly();
 
-                    INSERT Filmes (DiretorId, Titulo, Ano, Minutos) VALUES (1, 'Pulp Fiction', 1994,	154);
-                    INSERT Filmes (DiretorId, Titulo, Ano, Minutos) VALUES (1, 'Django Livre', 2012,	165);
-                    INSERT Filmes (DiretorId, Titulo, Ano, Minutos) VALUES (1, 'Kill Bill Volume 1', 2003,	111);
-                    INSERT Filmes (DiretorId, Titulo, Ano, Minutos) VALUES (2, 'Avatar', 2009,	162);
-                    INSERT Filmes (DiretorId, Titulo, Ano, Minutos) VALUES (2, 'Titanic', 1997,	194);
-                    INSERT Filmes (DiretorId, Titulo, Ano, Minutos) VALUES (2, 'O Exterminador do Futuro', 1984,	107);
-                    INSERT Filmes (DiretorId, Titulo, Ano, Minutos) VALUES (3, 'O Estranho Mundo de Jack', 1993,	76);
-                    INSERT Filmes (DiretorId, Titulo, Ano, Minutos) VALUES (3, 'Alice no País das Maravilhas', 2010,	108);
-                    INSERT Filmes (DiretorId, Titulo, Ano, Minutos) VALUES (3, 'A Noiva Cadáver', 2005,	77);
-                    INSERT Filmes (DiretorId, Titulo, Ano, Minutos) VALUES (3, 'A Fantástica Fábrica de Chocolate', 2005,	115);";
-            await ExecutarComandoAsync(sql, databaseName);
+            var sql = new StringBuilder();
+
+            using (Stream stream = assembly.GetManifestResourceStream("Cinema.Dados.Diretores.txt"))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                string line;
+                while ((line = await reader.ReadLineAsync()) != null)
+                {
+                    sql.AppendLine($"INSERT Diretores (Nome) VALUES ('{line}');");
+                }
+            }
+
+            using (Stream stream = assembly.GetManifestResourceStream("Cinema.Dados.Filmes.txt"))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                string line;
+                while ((line = await reader.ReadLineAsync()) != null)
+                {
+                    string[] fields = line.Split(',');
+                    string diretorId = fields[0];
+                    string titulo = fields[1];
+                    string ano = fields[2];
+                    string minutos = fields[3];
+                    sql.AppendLine($"INSERT Filmes (DiretorId, Titulo, Ano, Minutos) VALUES ({diretorId},'{titulo}',{ano},{minutos})");
+                }
+            }
+
+            await ExecutarComandoAsync(sql.ToString(), databaseName);
         }
 
         private async Task ExecutarComandoAsync(string sql, string banco)
