@@ -63,9 +63,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Cinema.pfx" />
-<<<<<<< HEAD
     <None Include="Cinema.snk" />
-=======
     <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex2.1-Criar e gerenciar diretrizes de pré-processador\Ex01.md" />
     <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex2.1-Criar e gerenciar diretrizes de pré-processador\Ex02.md" />
     <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex1.2-assinar assemblies usando nomes fortes\Ex03.md" />
@@ -87,7 +85,6 @@
     <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex2.1-Criar e gerenciar diretrizes de pré-processador\Ex19.md" />
     <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex20.md" />
     <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex3.4-escrever para o log de eventos\Ex21.md" />
->>>>>>> e85bce0d594a19cf214c66aaf1ae1437f1b4295c
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
