@@ -44,6 +44,10 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cinema.Dados, Version=1.0.0.0, Culture=neutral, PublicKeyToken=427a68834e0023c7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Cinema.Dados\v4.0_1.0.0.0__427a68834e0023c7\Cinema.Dados.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlClient, Version=4.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -64,12 +68,6 @@
     <None Include="App.config" />
     <None Include="Cinema.snk" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CinemaService\Cinema.Dados.csproj">
-      <Project>{C1C50EF1-FA1A-4967-95E9-BD4124C6429F}</Project>
-      <Name>Cinema.Dados</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
