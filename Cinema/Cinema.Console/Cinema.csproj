@@ -63,7 +63,31 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Cinema.pfx" />
+<<<<<<< HEAD
     <None Include="Cinema.snk" />
+=======
+    <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex2.1-Criar e gerenciar diretrizes de pré-processador\Ex01.md" />
+    <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex2.1-Criar e gerenciar diretrizes de pré-processador\Ex02.md" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex1.2-assinar assemblies usando nomes fortes\Ex03.md" />
+    <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex2.1-Criar e gerenciar diretrizes de pré-processador\Ex04.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex3.3-criar e monitor contadores de desempenho\Ex05.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex3.1-Implementar log e rastreamento\Ex06.md" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex1.2-assinar assemblies usando nomes fortes\Ex07.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex3.3-criar e monitor contadores de desempenho\Ex08.md" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex1.1-Controlar versão de assemblies\Ex09.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex3.4-escrever para o log de eventos\Ex10.md" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex1.2-assinar assemblies usando nomes fortes\Ex11.md" />
+    <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex2.3-gerenciar arquivos e símbolos de BD do programa\Ex12.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex3.1-Implementar log e rastreamento\Ex13.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex3.4-escrever para o log de eventos\Ex14.md" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex1.4-colocar um assembly no cache de assemblies global\Ex15.md" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex1.2-assinar assemblies usando nomes fortes\Ex16.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex3.4-escrever para o log de eventos\Ex17.md" />
+    <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex2.1-Criar e gerenciar diretrizes de pré-processador\Ex18.md" />
+    <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex2.1-Criar e gerenciar diretrizes de pré-processador\Ex19.md" />
+    <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex20.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex3.4-escrever para o log de eventos\Ex21.md" />
+>>>>>>> e85bce0d594a19cf214c66aaf1ae1437f1b4295c
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +95,12 @@
       <Project>{C1C50EF1-FA1A-4967-95E9-BD4124C6429F}</Project>
       <Name>Cinema.Dados</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exercicios\Ex1-Gerenciar assemblies\Ex1.3-implementar hospedagem lado a lado\" />
+    <Folder Include="Exercicios\Ex1-Gerenciar assemblies\Ex1.5-criar um assembly WinMD\" />
+    <Folder Include="Exercicios\Ex2-Depurar um aplicativo\Ex2.2-escolher um tipo de compilação apropriado\" />
+    <Folder Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex3.2-criação de perfil de aplicativos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
