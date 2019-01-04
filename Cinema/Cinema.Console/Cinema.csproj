@@ -38,7 +38,10 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Cinema.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Cinema.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -60,6 +63,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Cinema.pfx" />
+    <None Include="Cinema.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
