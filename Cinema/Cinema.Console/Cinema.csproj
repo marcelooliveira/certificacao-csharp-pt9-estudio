@@ -60,6 +60,27 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Cinema.pfx" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex01.md" />
+    <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex02.md" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex03.md" />
+    <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex04.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex05.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex06.md" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex07.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex08.md" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex09.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex10.md" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex11.md" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex12.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex13.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex14.md" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex15.md" />
+    <None Include="Exercicios\Ex1-Gerenciar assemblies\Ex16.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex17.md" />
+    <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex18.md" />
+    <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex19.md" />
+    <None Include="Exercicios\Ex2-Depurar um aplicativo\Ex20.md" />
+    <None Include="Exercicios\Ex3-Implementar diagnóstico em um aplicativo\Ex21.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
