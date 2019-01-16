@@ -137,6 +137,13 @@ namespace Cinema.Dados
                 }
             }
 
+
+            //para testar:
+            //msbuild Cinema.sln / p:DefineConstants = "MODO_DEBUG;MODO_DEBUG_QUANTIDADE"
+            //#if MODO_DEBUG && MODO_DEBUG_QUANTIDADE
+            //#error O programa não pode rodar com mais de um modo debug.
+            //#endif
+
             //para testar:
             //msbuild Cinema.sln / p:DefineConstants = "MODO_DEBUG"
 #if MODO_DEBUG
@@ -147,15 +154,33 @@ namespace Cinema.Dados
 //                Console.WriteLine("Método GetFilmes() executado com sucesso, {0} filmes retornados: \n{1}", filmes.Count, JsonConvert.SerializeObject(filmes));
 #endif
 
+#pragma warning disable CS0618
+            ExibirFilmes(filmes);
+#pragma warning restore
+
             ExibirJsonFilmes(filmes);
 
             return filmes;
         }
 
         [Conditional("MODO_DEBUG_DETALHADO")]
+        [DebuggerStepThrough]
         void ExibirJsonFilmes(IList<Filme> filmes)
         {
             Console.WriteLine("Método GetFilmes() executado com sucesso, {0} filmes retornados: \n{1}", filmes.Count, JsonConvert.SerializeObject(filmes));
         }
+
+        [Obsolete("Este método está obsoleto. Utilize o método ExibirJsonFilmes().")]
+        void ExibirFilmes(IList<Filme> filmes)
+        {
+            
+        }
+
+#pragma warning disable
+        public async Task Aguardar5Segundos()
+        {
+            Task.Delay(5000);
+        }
+#pragma warning restore
     }
-}
+    }
