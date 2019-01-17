@@ -11,6 +11,8 @@ namespace Cinema.Dados
 {
     public class CinemaDB
     {
+        bool ModoDebug = false;
+
         private readonly string databaseServer;
         private readonly string masterDatabase;
         private readonly string databaseName;
@@ -133,6 +135,11 @@ namespace Cinema.Dados
                     string titulo = reader["Titulo"].ToString();
                     filmes.Add(new Filme(diretor, titulo));
                 }
+            }
+
+            if (ModoDebug)
+            {
+                Console.WriteLine("O método GetFilmes() foi executado com sucesso.");
             }
 
             return filmes;
