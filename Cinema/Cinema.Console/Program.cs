@@ -13,24 +13,9 @@ namespace Cinema
 
         static async Task Main(string[] args)
         {
-#warning ESTA VERSÃO ESTÁ DESATUALIZADA. SIGA AS INSTRUÇÕES E ATUALIZE PARA A VERSÃO 2.0.
-
-//            try
-//            {
-//#line 1 "um erro comum"
-//                //throw new Exception("Erro comum");
-//#line 2 "um erro de aplicação"
-//                throw new ApplicationException("Erro de aplicação");
-//#line default
-//            }
-//            catch (Exception e)
-//            {
-//                Console.WriteLine(e.StackTrace);
-//            }
-
-            //string assemblyName = typeof(Cinema.Program).Assembly.FullName;
-            //Console.WriteLine(assemblyName);
-            //Console.ReadKey();
+            string assemblyName = typeof(Cinema.Program).Assembly.FullName;
+            Console.WriteLine(assemblyName);
+            Console.ReadKey();
 
             var cinemaDB = new CinemaDB(DatabaseServer, MasterDatabase, DatabaseName);
 
