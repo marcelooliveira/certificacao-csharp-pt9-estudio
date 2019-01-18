@@ -28,7 +28,7 @@ namespace Cinema
                 Console.WriteLine("Diretor: {0} Titulo: {1}", filme.Diretor, filme.Titulo);
             }
 
-            Console.ReadKey();
+            Console.ReadLine();
         }
 
     }
