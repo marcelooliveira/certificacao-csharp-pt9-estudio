@@ -131,12 +131,14 @@ namespace Cinema.Dados
                     , connection);
                 SqlDataReader reader = await command.ExecuteReaderAsync();
 
+#line hidden
                 while (reader.Read())
                 {
                     string diretor = reader["Diretor"].ToString();
                     string titulo = reader["Titulo"].ToString();
                     filmes.Add(new Filme(diretor, titulo));
                 }
+#line default
             }
 
 #if MODO_DEBUG && MODO_DEBUG_DETALHADO
@@ -160,6 +162,7 @@ namespace Cinema.Dados
 
         [Conditional("MODO_DEBUG_DETALHADO")]
         [Obsolete("Este método está obsoleto. Utilize o novo método ExibirFilmesJsonFormatado")]
+        [DebuggerStepThrough]
         void ExibirFilmesJson(IList<Filme> filmes)
         {
             Console.WriteLine("O método GetFilmes() foi executado com sucesso. {0}", JsonConvert.SerializeObject(filmes));
