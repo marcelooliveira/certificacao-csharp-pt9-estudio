@@ -153,9 +153,16 @@ namespace Cinema.Dados
         }
 
         [Conditional("MODO_DEBUG_DETALHADO")]
+        [Obsolete("Este método está obsoleto. Utilize o novo método ExibirFilmesJsonFormatado")]
         void ExibirFilmesJson(IList<Filme> filmes)
         {
             Console.WriteLine("O método GetFilmes() foi executado com sucesso. {0}", JsonConvert.SerializeObject(filmes));
+        }
+
+        [Conditional("MODO_DEBUG_DETALHADO")]
+        void ExibirFilmesJsonFormatado(IList<Filme> filmes)
+        {
+            Console.WriteLine("O método GetFilmes() foi executado com sucesso. {0}", JsonConvert.SerializeObject(filmes, Formatting.Indented));
         }
     }
 }
