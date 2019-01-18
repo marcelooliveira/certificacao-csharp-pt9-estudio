@@ -11,7 +11,7 @@ namespace Cinema.Dados
 {
     public class CinemaDB
     {
-        bool ModoDebug = false;
+        //bool ModoDebug = false;
 
         private readonly string databaseServer;
         private readonly string masterDatabase;
@@ -137,10 +137,11 @@ namespace Cinema.Dados
                 }
             }
 
-            if (ModoDebug)
-            {
+#if MODO_DEBUG
                 Console.WriteLine("O método GetFilmes() foi executado com sucesso.");
-            }
+#elif MODO_DEBUG_QUANTIDADE
+                Console.WriteLine("O método GetFilmes() foi executado com sucesso. {0} filmes retornados.", filmes.Count);
+#endif
 
             return filmes;
         }
