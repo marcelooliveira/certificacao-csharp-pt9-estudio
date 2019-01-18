@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;MODO_DEBUG;MODO_DEBUG_DETALHADO</DefineConstants>
+    <DefineConstants>TRACE;MODO_DEBUG_DETALHADO</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
