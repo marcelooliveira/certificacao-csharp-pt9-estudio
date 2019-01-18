@@ -139,15 +139,19 @@ namespace Cinema.Dados
                 }
             }
 
+#if MODO_DEBUG && MODO_DEBUG_DETALHADO
+#error Você não pode usar mais de um modo de debug!
+#endif
+
 #if MODO_DEBUG
-                Console.WriteLine("O método GetFilmes() foi executado com sucesso.");
+            Console.WriteLine("O método GetFilmes() foi executado com sucesso.");
 #elif MODO_DEBUG_QUANTIDADE
                 Console.WriteLine("O método GetFilmes() foi executado com sucesso. {0} filmes retornados.", filmes.Count);
 //#elif MODO_DEBUG_DETALHADO
 //            ExibirFilmesJson(filmes);            
 #endif
 
-            ExibirFilmesJson(filmes);
+            ExibirFilmesJsonFormatado(filmes);
 
             return filmes;
         }
