@@ -151,7 +151,9 @@ namespace Cinema.Dados
 //            ExibirFilmesJson(filmes);            
 #endif
 
-            ExibirFilmesJsonFormatado(filmes);
+#pragma warning disable CS0618 // Type or member is obsolete
+            ExibirFilmesJson(filmes);
+#pragma warning restore CS0618 // Type or member is obsolete
 
             return filmes;
         }
