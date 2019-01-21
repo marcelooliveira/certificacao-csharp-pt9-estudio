@@ -17,6 +17,8 @@ namespace Cinema
             //Console.WriteLine(assemblyName);
             //Console.ReadKey();
 
+            string estaVarivelEhDebug = "Esta variável só existe em debug.";
+
             var cinemaDB = new CinemaDB(DatabaseServer, MasterDatabase, DatabaseName);
 
             await cinemaDB.CriarBancoDeDadosAsync();
