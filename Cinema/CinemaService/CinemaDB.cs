@@ -28,13 +28,13 @@ namespace Cinema.Dados
 
         public async Task CriarBancoDeDadosAsync()
         {
-            Debug.WriteLine("Entrando no método CriarBancoDeDadosAsync", "MÉTODO");
-            Debug.Indent();
+            Trace.WriteLine("Entrando no método CriarBancoDeDadosAsync", "MÉTODO");
+            Trace.Indent();
             await CriarBancoAsync();
             await CriarTabelasAsync();
             await InserirRegistrosAsync();
-            Debug.Unindent();
-            Debug.WriteLine("Saindo do método CriarBancoDeDadosAsync", "MÉTODO");
+            Trace.Unindent();
+            Trace.WriteLine("Saindo do método CriarBancoDeDadosAsync", "MÉTODO");
         }
 
         private async Task CriarBancoAsync()
@@ -105,7 +105,7 @@ namespace Cinema.Dados
             {
                 conexao.Open();
                 await comando.ExecuteNonQueryAsync();
-                Debug.WriteLine($"Script executado com sucesso: {sql}", "SCRIPT");
+                Trace.WriteLine($"Script executado com sucesso: {sql}", "SCRIPT");
             }
             catch (System.Exception ex)
             {
@@ -122,8 +122,8 @@ namespace Cinema.Dados
 
         public async Task<IList<Filme>> GetFilmes()
         {
-            Debug.WriteLine("Entrando no método GetFilmes", "MÉTODO");
-            Debug.Indent();
+            Trace.WriteLine("Entrando no método GetFilmes", "MÉTODO");
+            Trace.Indent();
             IList<Filme> filmes = new List<Filme>();
             string connectionString = $"Server={databaseServer};Integrated security=SSPI;database={databaseName}";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -152,9 +152,9 @@ namespace Cinema.Dados
 #endif
 
 #if MODO_DEBUG
-            Debug.WriteLine("O método GetFilmes() foi executado com sucesso.");
+            Trace.WriteLine("O método GetFilmes() foi executado com sucesso.");
 #elif MODO_DEBUG_QUANTIDADE
-                Debug.WriteLine("O método GetFilmes() foi executado com sucesso. {0} filmes retornados.", filmes.Count);
+                Trace.WriteLine("O método GetFilmes() foi executado com sucesso. {0} filmes retornados.", filmes.Count);
 //#elif MODO_DEBUG_DETALHADO
 //            ExibirFilmesJson(filmes);            
 #endif
@@ -162,8 +162,8 @@ namespace Cinema.Dados
 #pragma warning disable CS0618 // Type or member is obsolete
             ExibirFilmesJson(filmes);
 #pragma warning restore CS0618 // Type or member is obsolete
-            Debug.Unindent();
-            Debug.WriteLine("Saindo do método GetFilmes", "MÉTODO");
+            Trace.Unindent();
+            Trace.WriteLine("Saindo do método GetFilmes", "MÉTODO");
             return filmes;
         }
 
@@ -172,13 +172,13 @@ namespace Cinema.Dados
         [DebuggerStepThrough]
         void ExibirFilmesJson(IList<Filme> filmes)
         {
-            Debug.WriteLine("O método GetFilmes() foi executado com sucesso. {0}", JsonConvert.SerializeObject(filmes));
+            Trace.WriteLine("O método GetFilmes() foi executado com sucesso. {0}", JsonConvert.SerializeObject(filmes));
         }
 
         [Conditional("MODO_DEBUG_DETALHADO")]
         void ExibirFilmesJsonFormatado(IList<Filme> filmes)
         {
-            Debug.WriteLine("O método GetFilmes() foi executado com sucesso. {0}", JsonConvert.SerializeObject(filmes, Formatting.Indented));
+            Trace.WriteLine("O método GetFilmes() foi executado com sucesso. {0}", JsonConvert.SerializeObject(filmes, Formatting.Indented));
         }
     }
 }
