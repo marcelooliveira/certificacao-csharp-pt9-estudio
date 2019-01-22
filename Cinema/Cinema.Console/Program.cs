@@ -26,9 +26,12 @@ namespace Cinema
 
             IList<Filme> filmes = await cinemaDB.GetFilmes();
 
+            Console.WriteLine("RELATÓRIO DE FILMES");
+            Console.WriteLine(new string('=', 50));
             foreach (var filme in filmes)
             {
-                Console.WriteLine("Diretor: {0} Titulo: {1}", filme.Diretor, filme.Titulo);
+                Console.WriteLine("Diretor: {0}\n Titulo: {1}", filme.Diretor, filme.Titulo);
+                Console.WriteLine(new string('-', 50));
             }
 
             Console.ReadLine();
