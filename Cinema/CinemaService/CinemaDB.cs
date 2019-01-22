@@ -28,9 +28,13 @@ namespace Cinema.Dados
 
         public async Task CriarBancoDeDadosAsync()
         {
+            Debug.WriteLine("Entrando no método CriarBancoDeDadosAsync", "MÉTODO");
+            Debug.Indent();
             await CriarBancoAsync();
             await CriarTabelasAsync();
             await InserirRegistrosAsync();
+            Debug.Unindent();
+            Debug.WriteLine("Saindo do método CriarBancoDeDadosAsync", "MÉTODO");
         }
 
         private async Task CriarBancoAsync()
@@ -101,7 +105,7 @@ namespace Cinema.Dados
             {
                 conexao.Open();
                 await comando.ExecuteNonQueryAsync();
-                Debug.WriteLine("Script executado com sucesso.");
+                Debug.WriteLine($"Script executado com sucesso: {sql}", "SCRIPT");
             }
             catch (System.Exception ex)
             {
@@ -118,6 +122,8 @@ namespace Cinema.Dados
 
         public async Task<IList<Filme>> GetFilmes()
         {
+            Debug.WriteLine("Entrando no método GetFilmes", "MÉTODO");
+            Debug.Indent();
             IList<Filme> filmes = new List<Filme>();
             string connectionString = $"Server={databaseServer};Integrated security=SSPI;database={databaseName}";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -156,7 +162,8 @@ namespace Cinema.Dados
 #pragma warning disable CS0618 // Type or member is obsolete
             ExibirFilmesJson(filmes);
 #pragma warning restore CS0618 // Type or member is obsolete
-
+            Debug.Unindent();
+            Debug.WriteLine("Saindo do método GetFilmes", "MÉTODO");
             return filmes;
         }
 
