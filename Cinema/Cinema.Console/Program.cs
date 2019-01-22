@@ -1,6 +1,7 @@
 ﻿using Cinema.Dados;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace Cinema
@@ -13,6 +14,12 @@ namespace Cinema
 
         static async Task Main(string[] args)
         {
+            //TraceListener traceListener = new ConsoleTraceListener();
+            //TraceListener traceListener = new TextWriterTraceListener("log.txt");
+
+            //Trace.Listeners.Add(traceListener);
+            Trace.AutoFlush = true;
+
             var cinemaDB = new CinemaDB(DatabaseServer, MasterDatabase, DatabaseName);
 
             await cinemaDB.CriarBancoDeDadosAsync();
@@ -26,7 +33,7 @@ namespace Cinema
                 Console.WriteLine("Diretor: {0}\n Titulo: {1}", filme.Diretor, filme.Titulo);
                 Console.WriteLine(new string('-', 50));
             }
-
+            //traceListener.Flush();
             Console.ReadLine();
         }
 
