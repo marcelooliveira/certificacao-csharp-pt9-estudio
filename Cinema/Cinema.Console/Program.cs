@@ -24,6 +24,11 @@ namespace Cinema
 
             Trace.AutoFlush = true;
 
+            TraceSource traceSource = new TraceSource("Cinema", SourceLevels.All);
+            traceSource.Listeners.Add(traceListener);
+
+            traceSource.TraceEvent(TraceEventType.Information, 1001, "A aplicação iniciou.");
+
             var cinemaDB = new CinemaDB(DatabaseServer, MasterDatabase, DatabaseName);
 
             await cinemaDB.CriarBancoDeDadosAsync();
@@ -38,7 +43,16 @@ namespace Cinema
                 Console.WriteLine(new string('-', 50));
             }
             //traceListener.Flush();
+
+            Console.CancelKeyPress += (source, e) =>
+            {
+                traceSource.TraceEvent(TraceEventType.Warning, 1003, "Control + C foi acionado");
+                e.Cancel = true;
+            };
+
             Console.ReadLine();
+
+            traceSource.TraceEvent(TraceEventType.Information, 1002, "A aplicação terminou.");
         }
 
     }
