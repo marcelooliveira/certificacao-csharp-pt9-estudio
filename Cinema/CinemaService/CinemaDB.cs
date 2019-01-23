@@ -30,9 +30,19 @@ namespace Cinema.Dados
         {
             Trace.WriteLine("Entrando no método CriarBancoDeDadosAsync", "MÉTODO");
             Trace.Indent();
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             await CriarBancoAsync();
             await CriarTabelasAsync();
+            stopwatch.Stop();
+            Console.WriteLine("Criação do banco e tabelas: {0} milissegundos", stopwatch.ElapsedMilliseconds);
+
+            stopwatch.Restart();
             await InserirRegistrosAsync();
+            stopwatch.Stop();
+            Console.WriteLine("Inserção no banco de dados: {0} milissegundos", stopwatch.ElapsedMilliseconds);
+
             Trace.Unindent();
             Trace.WriteLine("Saindo do método CriarBancoDeDadosAsync", "MÉTODO");
         }
