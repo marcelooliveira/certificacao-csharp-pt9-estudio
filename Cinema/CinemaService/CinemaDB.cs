@@ -109,7 +109,8 @@ namespace Cinema.Dados
             }
             catch (System.Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Trace.TraceError(ex.ToString());
+                throw;
             }
             finally
             {
