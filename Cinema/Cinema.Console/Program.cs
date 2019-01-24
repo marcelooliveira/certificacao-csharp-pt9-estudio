@@ -34,7 +34,7 @@ namespace Cinema
             await cinemaDB.CriarBancoDeDadosAsync();
 
             IList<Filme> filmes = await cinemaDB.GetFilmes();
-
+            
             Console.WriteLine("RELATÓRIO DE FILMES");
             Console.WriteLine(new string('=', 50));
             foreach (var filme in filmes)
@@ -53,6 +53,15 @@ namespace Cinema
             Console.ReadLine();
 
             traceSource.TraceEvent(TraceEventType.Information, 1002, "A aplicação terminou.");
+
+            if (!EventLog.SourceExists("MinhaFonte"))
+            {
+                EventLog.CreateEventSource("MinhaFonte", "Application");
+            }
+            EventLog eventLog = new EventLog();
+            eventLog.Source = "MinhaFonte";
+            eventLog.WriteEntry("A aplicação terminou.", EventLogEntryType.Information, 1002);
+            eventLog.Close();
         }
 
     }
