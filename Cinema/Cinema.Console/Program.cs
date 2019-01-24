@@ -61,7 +61,14 @@ namespace Cinema
             EventLog eventLog = new EventLog();
             eventLog.Source = "MinhaFonte";
             eventLog.WriteEntry("A aplicação terminou.", EventLogEntryType.Information, 1002);
+
+            foreach (EventLogEntry entrada in eventLog.Entries)
+            {
+                Console.WriteLine($"Fonte: {entrada.Source}\nTipo: {entrada.EntryType}\nHora: {entrada.TimeWritten}\nMensagem: {entrada.Message}\n");
+            }
+
             eventLog.Close();
+            Console.ReadLine();
         }
 
     }
