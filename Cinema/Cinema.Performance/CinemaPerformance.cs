@@ -27,19 +27,16 @@ namespace Cinema.Performance
             {
                 CounterCreationDataCollection counterDataCollection = new CounterCreationDataCollection();
 
-                // Adiciona o contador.
                 CounterCreationData dadosContador = new CounterCreationData();
                 dadosContador.CounterType = PerformanceCounterType.AverageTimer32;
                 dadosContador.CounterName = NomeContadorAverageTimer32;
                 counterDataCollection.Add(dadosContador);
 
-                // Adiciona o contador base.
                 CounterCreationData dadosContadorBase = new CounterCreationData();
                 dadosContadorBase.CounterType = PerformanceCounterType.AverageBase;
                 dadosContadorBase.CounterName = NomeContadorAverageTimer32Base;
                 counterDataCollection.Add(dadosContadorBase);
 
-                // Cria a categoria.
                 PerformanceCounterCategory.Create(NomeCategoriaContadores,
                     "Demonstra o uso do contador de performance de tipo AverageTimer32.",
                     PerformanceCounterCategoryType.SingleInstance, counterDataCollection);
