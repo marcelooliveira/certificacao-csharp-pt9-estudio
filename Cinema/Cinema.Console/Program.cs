@@ -85,6 +85,9 @@ namespace Cinema
             var tempoDecorrido = stopwatch.ElapsedMilliseconds;
 
             Console.WriteLine($"Tempo decorrido: {tempoDecorrido} milissegundos.");
+
+            CinemaPerformance.ContadorAverageTimer32.IncrementBy(stopwatch.ElapsedTicks);
+            CinemaPerformance.ContadorAverageTimer32Base.Increment();
         }
 
         private static async Task<CinemaDB> CriarBanco()
