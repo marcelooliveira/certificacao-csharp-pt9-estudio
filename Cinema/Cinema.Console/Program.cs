@@ -1,4 +1,5 @@
 ﻿using Cinema.Dados;
+using Cinema.Performance;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,6 +15,11 @@ namespace Cinema
 
         static async Task Main(string[] args)
         {
+            if (CinemaPerformance.ConfigurarCategoria())
+                return;
+
+            CinemaPerformance.CriarContadores();
+
             TraceListener traceListener = new EventLogTraceListener("Cinema");
             Trace.Listeners.Add(traceListener);
 
@@ -61,6 +67,9 @@ namespace Cinema
 
         private static async Task GerarRelatorio(CinemaDB cinemaDB)
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             IList<Filme> filmes = await cinemaDB.GetFilmes();
 
             Console.WriteLine("RELATÓRIO DE FILMES");
@@ -70,6 +79,12 @@ namespace Cinema
                 Console.WriteLine("Diretor: {0}\n Titulo: {1}", filme.Diretor, filme.Titulo);
                 Console.WriteLine(new string('-', 50));
             }
+
+            stopwatch.Stop();
+
+            var tempoDecorrido = stopwatch.ElapsedMilliseconds;
+
+            Console.WriteLine($"Tempo decorrido: {tempoDecorrido} milissegundos.");
         }
 
         private static async Task<CinemaDB> CriarBanco()

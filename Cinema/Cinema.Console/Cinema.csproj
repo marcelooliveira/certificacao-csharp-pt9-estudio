@@ -69,6 +69,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Cinema.Performance\Cinema.Performance.csproj">
+      <Project>{586083f0-4e69-49f3-b1e8-e22224b78889}</Project>
+      <Name>Cinema.Performance</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CinemaService\Cinema.Dados.csproj">
       <Project>{b55927ad-8f82-4619-b95b-1dfd1c8fce69}</Project>
       <Name>Cinema.Dados</Name>
