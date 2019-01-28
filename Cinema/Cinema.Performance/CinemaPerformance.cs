@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace Cinema.Performance
 {
-    public class Performance
+    public class CinemaPerformance
     {
         private const string NomeCategoriaContadores = "_Cinema";
         private const string NomeContadorAverageTimer32 = "AverageTimer32Sample";
         private const string NomeContadorAverageTimer32Base = "AverageTimer32SampleBase";
-        public static PerformanceCounter contadorAverageTimer32;
-        public static PerformanceCounter contadorAverageTimer32Base;
+        public static PerformanceCounter ContadorAverageTimer32;
+        public static PerformanceCounter ContadorAverageTimer32Base;
 
         /// <summary>
         //Se a categoria não existir, crie a categoria e saia.
@@ -48,7 +48,10 @@ namespace Cinema.Performance
             }
             else
             {
-                Console.WriteLine("Categoria já existes - " + NomeCategoriaContadores);
+                Console.WriteLine("Categoria já existe - " + NomeCategoriaContadores);
+                Console.WriteLine("Tecle algo para fechar o programa");
+                Console.WriteLine("E rode novamente para utilizar os contadores de performance.");
+                Console.ReadKey();
                 return (false);
             }
         }
@@ -56,16 +59,16 @@ namespace Cinema.Performance
         public static void CriarContadores()
         {
             // Cria os contadores.
-            contadorAverageTimer32 = new PerformanceCounter(NomeCategoriaContadores,
+            ContadorAverageTimer32 = new PerformanceCounter(NomeCategoriaContadores,
                 NomeContadorAverageTimer32,
                 false);
 
-            contadorAverageTimer32Base = new PerformanceCounter(NomeCategoriaContadores,
+            ContadorAverageTimer32Base = new PerformanceCounter(NomeCategoriaContadores,
                 NomeContadorAverageTimer32Base,
                 false);
 
-            contadorAverageTimer32.RawValue = 0;
-            contadorAverageTimer32Base.RawValue = 0;
+            ContadorAverageTimer32.RawValue = 0;
+            ContadorAverageTimer32Base.RawValue = 0;
         }
 
         public static async Task ColetarAmostrasAsync(List<CounterSample> amostras)
@@ -82,8 +85,8 @@ namespace Cinema.Performance
                 stopwatch.Stop();
 
                 var performanceCounterTicks = stopwatch.Elapsed.Ticks * Stopwatch.Frequency / TimeSpan.TicksPerSecond;
-                contadorAverageTimer32.IncrementBy(performanceCounterTicks);
-                contadorAverageTimer32Base.Increment();
+                ContadorAverageTimer32.IncrementBy(performanceCounterTicks);
+                ContadorAverageTimer32Base.Increment();
 
                 stopwatch.Reset();
             }
