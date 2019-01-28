@@ -44,14 +44,15 @@ namespace Cinema.Performance
                     "Demonstra o uso do contador de performance de tipo AverageTimer32.",
                     PerformanceCounterCategoryType.SingleInstance, counterDataCollection);
 
+                Console.WriteLine("Tecle algo para fechar o programa");
+                Console.WriteLine("e rode novamente para utilizar os contadores de performance.");
+                Console.ReadKey();
+
                 return (true);
             }
             else
             {
                 Console.WriteLine("Categoria já existe - " + NomeCategoriaContadores);
-                Console.WriteLine("Tecle algo para fechar o programa");
-                Console.WriteLine("E rode novamente para utilizar os contadores de performance.");
-                Console.ReadKey();
                 return (false);
             }
         }
