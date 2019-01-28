@@ -14,11 +14,6 @@ namespace Cinema
 
         static async Task Main(string[] args)
         {
-            //TraceListener traceListener = new ConsoleTraceListener();
-            //TraceListener traceListener = new TextWriterTraceListener("log.txt");
-
-            //Trace.Listeners.Add(traceListener);
-
             TraceListener traceListener = new EventLogTraceListener("Cinema");
             Trace.Listeners.Add(traceListener);
 
@@ -29,18 +24,11 @@ namespace Cinema
 
             traceSource.TraceEvent(TraceEventType.Information, 1001, "A aplicação iniciou.");
 
-            var cinemaDB = new CinemaDB(DatabaseServer, MasterDatabase, DatabaseName);
+            CinemaDB cinemaDB = await CriarBanco();
 
-            await cinemaDB.CriarBancoDeDadosAsync();
-
-            IList<Filme> filmes = await cinemaDB.GetFilmes();
-            
-            Console.WriteLine("RELATÓRIO DE FILMES");
-            Console.WriteLine(new string('=', 50));
-            foreach (var filme in filmes)
+            while (true)
             {
-                Console.WriteLine("Diretor: {0}\n Titulo: {1}", filme.Diretor, filme.Titulo);
-                Console.WriteLine(new string('-', 50));
+                await GerarRelatorio(cinemaDB);
             }
             //traceListener.Flush();
 
@@ -71,5 +59,25 @@ namespace Cinema
             Console.ReadLine();
         }
 
+        private static async Task GerarRelatorio(CinemaDB cinemaDB)
+        {
+            IList<Filme> filmes = await cinemaDB.GetFilmes();
+
+            Console.WriteLine("RELATÓRIO DE FILMES");
+            Console.WriteLine(new string('=', 50));
+            foreach (var filme in filmes)
+            {
+                Console.WriteLine("Diretor: {0}\n Titulo: {1}", filme.Diretor, filme.Titulo);
+                Console.WriteLine(new string('-', 50));
+            }
+        }
+
+        private static async Task<CinemaDB> CriarBanco()
+        {
+            var cinemaDB = new CinemaDB(DatabaseServer, MasterDatabase, DatabaseName);
+
+            await cinemaDB.CriarBancoDeDadosAsync();
+            return cinemaDB;
+        }
     }
 }
