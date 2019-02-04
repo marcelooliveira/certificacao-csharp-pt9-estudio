@@ -1,0 +1,15 @@
+﻿<E2ETraceEvent xmlns="http://schemas.microsoft.com/2004/06/E2ETraceEvent">
+  <System xmlns="http://schemas.microsoft.com/2004/06/windows/eventlog/system">
+    <EventID>2148734208</EventID>
+    <Type>3</Type>
+    <SubType Name="Error">0</SubType>
+    <Level>2</Level>
+    <TimeCreated SystemTime="2019-02-01T15:41:16.4905497Z" />
+    <Source Name="Execution is too long &gt; Delay(5000) &gt; 5011,4864" />
+    <Correlation ActivityID="{00000000-0000-0000-0000-000000000000}" />
+    <Execution ProcessName="ConsoleApp1" ProcessID="11748" ThreadID="1" />
+    <Channel/>
+    <Computer>DESKTOP-6FPHLJT</Computer>
+  </System>
+  <ApplicationData></ApplicationData>
+</E2ETraceEvent>
